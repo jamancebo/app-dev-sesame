@@ -1,0 +1,47 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  DevSesame\Shared\Domain\Bus\CommandBus:
+    class: 'DevSesame\Shared\Infrastructure\Bus\TacticianCommandBus'
+
+  DevSesame\Signings\Application\Command\Handler\FindUserHandler:
+    tags:
+      - { name: tactician.handler, command: DevSesame\Signings\Application\Command\FindUser, bus: default }
+
+  DevSesame\Signings\Application\Command\Handler\CreateUserHandler:
+    tags:
+      - { name: tactician.handler, command: DevSesame\Signings\Application\Command\CreateUser, bus: default }
+
+  DevSesame\Signings\Application\Command\Handler\UpdateUserHandler:
+    tags:
+      - { name: tactician.handler, command: DevSesame\Signings\Application\Command\UpdateUser, bus: default }
+
+  DevSesame\Signings\Application\Command\Handler\FindAllUsersHandler:
+    tags:
+      - { name: tactician.handler, command: DevSesame\Signings\Application\Command\FindAllUsers, bus: default }
+
+  DevSesame\Signings\Application\Command\Handler\RemoveUserHandler:
+    tags:
+      - { name: tactician.handler, command: DevSesame\Signings\Application\Command\RemoveUser, bus: default }
+
+  DevSesame\Signings\Application\Command\Handler\CreateWorkEntryHandler:
+    tags:
+      - { name: tactician.handler, command: DevSesame\Signings\Application\Command\CreateWorkEntry, bus: default }
+
+  DevSesame\Signings\Application\Command\Handler\FindWorkEntryHandler:
+    tags:
+      - { name: tactician.handler, command: DevSesame\Signings\Application\Command\FindWorkEntry, bus: default }
+
+  DevSesame\Signings\Application\Command\Handler\FindUserWorkEntryHandler:
+    tags:
+      - { name: tactician.handler, command: DevSesame\Signings\Application\Command\FindUserWorkEntry, bus: default }
+
+  DevSesame\Signings\Application\Command\Handler\RemoveWorkEntryHandler:
+    tags:
+      - { name: tactician.handler, command: DevSesame\Signings\Application\Command\RemoveWorkEntry, bus: default }
+
+  DevSesame\Signings\Application\Command\Handler\UpdateWorkEntryHandler:
+    tags:
+      - { name: tactician.handler, command: DevSesame\Signings\Application\Command\UpdateWorkEntry, bus: default }

@@ -1,0 +1,1 @@
+{"status":400,"data":{"data":"An exception occurred while executing a query: SQLSTATE[23000]: Integrity constraint violation: 1048 Column \u0027deleted_at\u0027 cannot be null"}}

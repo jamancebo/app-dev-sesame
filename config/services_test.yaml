@@ -1,0 +1,14 @@
+services:
+  _defaults:
+    public: true
+
+  #  DevAway\KartCompetition\Competition\Domain\Repository\RaceRepository:
+  #    class: 'DevAway\KartCompetition\Competition\Infrastructure\Repository\MysqlRaceRepository'
+  #    arguments: ['@doctrine.orm.entity_manager']
+
+  DevSesame\Tests\Integration\Shared\Infrastructure\DataFixtures\MysqlFixtureLoader:
+    class: 'DevSesame\Tests\Integration\Shared\Infrastructure\DataFixtures\MysqlFixtureLoader'
+    arguments:
+      - '@doctrine.orm.entity_manager'
+      - '@DevSesame\Signings\Domain\Repository\UserRepository'
+      - '@DevSesame\Signings\Domain\Repository\WorkEntryRepository'

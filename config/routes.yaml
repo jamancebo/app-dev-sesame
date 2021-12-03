@@ -1,3 +1,70 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+post_user:
+    path: /{version}/user
+    controller: DevSesame\Signings\Infrastructure\EntryPoint\Controller\User\PostUsers
+    methods: POST
+    requirements:
+      version: v1
+
+get_user:
+  path: /{version}/user/{id}
+  controller: DevSesame\Signings\Infrastructure\EntryPoint\Controller\User\GetUser
+  methods: GET
+  requirements:
+    version: v1
+
+
+put_user:
+  path: /{version}/user
+  controller: DevSesame\Signings\Infrastructure\EntryPoint\Controller\User\PutUser
+  methods: PUT
+  requirements:
+    version: v1
+
+getAll_user:
+  path: /{version}/user
+  controller: DevSesame\Signings\Infrastructure\EntryPoint\Controller\User\GetAllUsers
+  methods: GET
+  requirements:
+    version: v1
+
+delete_user:
+  path: /{version}/user
+  controller: DevSesame\Signings\Infrastructure\EntryPoint\Controller\User\DeleteUser
+  methods: DELETE
+  requirements:
+    version: v1
+
+post_workEntry:
+  path: /{version}/workentry
+  controller: DevSesame\Signings\Infrastructure\EntryPoint\Controller\WorkEntry\PostWorkEntry
+  methods: POST
+  requirements:
+    version: v1
+
+put_workEntry:
+  path: /{version}/workentry
+  controller: DevSesame\Signings\Infrastructure\EntryPoint\Controller\WorkEntry\PutWorkEntry
+  methods: PUT
+  requirements:
+    version: v1
+
+delete_workEntry:
+  path: /{version}/workentry
+  controller: DevSesame\Signings\Infrastructure\EntryPoint\Controller\WorkEntry\DeleteWorkEntry
+  methods: DELETE
+  requirements:
+    version: v1
+
+get_workEntry:
+  path: /{version}/workentry/{id}
+  controller: DevSesame\Signings\Infrastructure\EntryPoint\Controller\WorkEntry\GetWorkEntry
+  methods: GET
+  requirements:
+    version: v1
+
+get_user_workEntry:
+  path: /{version}/workentry/user/{userId}
+  controller: DevSesame\Signings\Infrastructure\EntryPoint\Controller\WorkEntry\GetUserWorkEntry
+  methods: GET
+  requirements:
+    version: v1

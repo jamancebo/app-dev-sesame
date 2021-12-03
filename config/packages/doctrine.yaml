@@ -1,0 +1,19 @@
+doctrine:
+    dbal:
+        url: 'mysql://root:sesame@database:3306/dev_sesame?serverVersion=8.0.27'
+        types:
+            IdType: DevSesame\Signings\Infrastructure\Repository\Persistence\Doctrine\CustomType\IdType
+            NameType: DevSesame\Signings\Infrastructure\Repository\Persistence\Doctrine\CustomType\NameType
+            EmailType: DevSesame\Signings\Infrastructure\Repository\Persistence\Doctrine\CustomType\EmailType
+
+    orm:
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            DevSesame\Signings\Domain:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Signings/Infrastructure/Repository/Persistence/Doctrine/Entity'
+                prefix: 'DevSesame\Signings\Domain\Entity'
+                alias: DevSesame

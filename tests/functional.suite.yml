@@ -1,0 +1,15 @@
+actor: FunctionalTester
+modules:
+    enabled:
+        - Symfony:
+              app_path: 'src'
+              environment: 'test'
+              kernel_class: 'DevSesame\Kernel'
+        - REST:
+              url: /
+              depends: Symfony
+        - Asserts
+coverage:
+    enabled: true
+    include:
+        - src/Signings/Infrastructure/EntryPoint/*

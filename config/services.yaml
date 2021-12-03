@@ -1,25 +1,33 @@
-# This file is the entry point to configure your own services.
-# Files in the packages/ subdirectory configure your dependencies.
-
-# Put parameters here that don't need to change on each machine where the app is deployed
-# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
 
+imports:
+    - { resource: services/commandbus.yaml }
+
 services:
-    # default configuration for services in *this* file
     _defaults:
-        autowire: true      # Automatically injects dependencies in your services.
-        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        autowire: true
+        autoconfigure: true
+        public: false
 
-    # makes classes in src/ available to be used as services
-    # this creates a service per class whose id is the fully-qualified class name
-    App\:
-        resource: '../src/'
-        exclude:
-            - '../src/DependencyInjection/'
-            - '../src/Entity/'
-            - '../src/Kernel.php'
-            - '../src/Tests/'
+    DevSesame\Shared\Infrastructure\:
+        resource: '../src/Shared/Infrastructure/*'
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    DevSesame\Signings\Application\:
+        resource: '../src/Signings/Application'
+        exclude: '../src/Signings/Application/{Command}'
+
+    DevSesame\Signings\Infrastructure\EntryPoint\Controller\:
+        resource: '../src/Signings/Infrastructure/EntryPoint/Controller'
+        tags: [ 'controller.service_arguments' ]
+
+    DevSesame\Signings\Domain\Repository\UserRepository:
+        class: 'DevSesame\Signings\Infrastructure\Repository\Persistence\MysqlUserRepository'
+        arguments: [ '@doctrine.orm.entity_manager' ]
+
+    DevSesame\Signings\Domain\Repository\WorkEntryRepository:
+        class: 'DevSesame\Signings\Infrastructure\Repository\Persistence\MysqlEntryWorkRepository'
+        arguments: [ '@doctrine.orm.entity_manager' ]
+
+    DevSesame\Signings\Domain\Service\JWTDecoder:
+        arguments:
+            - '%env(resolve:JWT_SECRET)%'
